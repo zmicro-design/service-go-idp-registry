@@ -1,0 +1,16 @@
+services:
+  go-idp-registry:
+    restart: always
+    image: ${SERVICE_IMAGE_REGISTRY}/whatwewant/go-idp-registry:${SERVICE_GO_IDP_REGISTRY_IMAGE_VERSION}
+    # ports:
+    #   - 0.0.0.0:${SERVICE_GO_IDP_REGISTRY_PORT}:8080
+    # environment:
+    #   USERNAME: ${SERVICE_GO_IDP_REGISTRY_USERNAME}
+    #   PASSWORD: ${SERVICE_GO_IDP_REGISTRY_PASSWORD}
+    volumes:
+      - ${SERVICE_CONFIG}/config.yaml:/etc/registry/config.yaml
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress

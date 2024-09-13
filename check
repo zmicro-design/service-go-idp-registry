@@ -1,0 +1,24 @@
+#!/bin/bash
+
+service::config_set() {
+  config::check_or_set $1 $2 $SERVICE_CONFIG "${@:3}"
+}
+
+check() {
+  if [ "$DEBUG" = "true" ]; then
+    log::info "[DEBUG][service]: $SERVICE_CONFIG"
+    cat $SERVICE_CONFIG
+  fi
+
+  if [ ! -f "$SERVICE_GO_IDP_REGISTRY_CONFIG" ]; then
+    log::error "config file not found: $SERVICE_GO_IDP_REGISTRY_CONFIG, please add it"
+    log::info ""
+    log::info "example:"
+    cat $SERVICE_DIR/conf/example.yaml
+    exit 1
+  fi
+
+  # service::config_set SERVICE_GO_IDP_REGISTRY_PORT text "Port" 8080
+}
+
+check $@

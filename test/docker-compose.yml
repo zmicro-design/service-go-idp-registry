@@ -1,0 +1,13 @@
+services:
+  go-idp-registry:
+    restart: always
+    image: whatwewant/go-idp-registry:${SERVICE_GO_IDP_REGISTRY_IMAGE_VERSION}
+    environment:
+      PORT: $SERVICE_GO_IDP_REGISTRY_PORT
+      USERNAME: ${SERVICE_GO_IDP_REGISTRY_USERNAME}
+      PASSWORD: ${SERVICE_GO_IDP_REGISTRY_PASSWORD}
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress
