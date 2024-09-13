@@ -8,7 +8,7 @@ services:
     #   USERNAME: ${SERVICE_GO_IDP_REGISTRY_USERNAME}
     #   PASSWORD: ${SERVICE_GO_IDP_REGISTRY_PASSWORD}
     volumes:
-      - ${SERVICE_CONFIG}/config.yaml:/etc/registry/config.yaml
+      - ${SERVICE_CONFIGS}/config.yaml:/etc/registry/config.yaml
       
 networks:
   default:
